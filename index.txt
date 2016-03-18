@@ -1,0 +1,19 @@
+//文章显隐函数 cyl  说明obj为文段对象number为控制字数
+function passageOpen(obj,number){
+  obj.each(function(i){
+      var l=obj.eq(i).text().length;
+      var s=obj.eq(i).html();
+      if (l>number) {
+        obj.eq(i).html(s.substring(0,number)+ "...<a id='zhankai' href='javascript:;'>详细</a>");
+      }
+      $(this).on("click","#zhankai",function(){
+
+        if ($(this).html()=="详细") {
+          $(this).parent().html(s+ "<a id='zhankai' href='javascript:;'>收起</a>");
+
+        }else{
+          $(this).parent().html(s.substring(0,number)+ "...<a id='zhankai' href='javascript:;'>详细</a>");
+        }
+      })
+  })
+}
